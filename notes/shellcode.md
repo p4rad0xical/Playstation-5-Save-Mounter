@@ -6,11 +6,11 @@ mov    rbp,rsp
 sub    rsp,0x50
 mov    QWORD PTR [rbp-0x48],rdi
 mov    QWORD PTR [rbp-0x50],rsi
-movabs rax,0xaaaaaaaaaaaaaaaa
+movabs rax,0xaaaaaaaaaaaaaaaa ; for fopen
 mov    QWORD PTR [rbp-0x18],rax
-movabs rax,0xbbbbbbbbbbbbbbbb
+movabs rax,0xbbbbbbbbbbbbbbbb ; for fread
 mov    QWORD PTR [rbp-0x20],rax
-movabs rax,0xcccccccccccccccc
+movabs rax,0xcccccccccccccccc ; for fclose
 mov    QWORD PTR [rbp-0x28],rax
 mov    rax,QWORD PTR [rbp-0x48]
 push   0x00000072 ; to create the string "r" for file read mode
@@ -26,7 +26,7 @@ jmp    0x8e
 mov    rdx,QWORD PTR [rbp-0x8]
 mov    rax,QWORD PTR [rbp-0x50]
 mov    rcx,rdx
-mov    edx,0xa2800
+mov    edx,0xa2800  ; size for the image, should be enough for most game images
 mov    esi,0x1
 mov    rdi,rax
 mov    rax,QWORD PTR [rbp-0x20]
